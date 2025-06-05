@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Мої замовлення</h2>
+
+{% if orders|length > 0 %}
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+            <tr style="background-color: var(--primary-color); color: white;">
+                <th style="padding: 10px; border: 1px solid #ddd;">Тип велосипеда</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Колір</th>
+                <th style="padding: 10px; border: 1px solid #ddd;">Електричний</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ order.bike_type }}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">{{ order.color }}</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">
+                    {{ 'Так' if order.is_electric else 'Ні' }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>У вас поки немає замовлень.</p>
+    <a href="{{ url_for('bike_selection') }}" style="
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: var(--secondary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 10px;
+    ">
+        Замовити велосипед
+    </a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" action="{{ url_for('bike_selection') }}">
+    <h2>Замовлення велосипеда</h2>
+    
+    <label for="bike_type">Тип велосипеда:</label>
+    <select id="bike_type" name="bike_type" required>
+        <option value="">Оберіть тип велосипеда</option>
+        <option value="mountain">Гірський</option>
+        <option value="city">Міський</option>
+        <option value="road">Шосейний</option>
+        <option value="hybrid">Гібридний</option>
+    </select>
+    
+    <label for="color">Колір:</label>
+    <select id="color" name="color" required>
+        <option value="">Оберіть колір</option>
+        <option value="red">Червоний</option>
+        <option value="blue">Синій</option>
+        <option value="green">Зелений</option>
+        <option value="black">Чорний</option>
+        <option value="white">Білий</option>
+    </select>
+    
+    <div>
+        <input 
+            type="checkbox" 
+            id="is_electric" 
+            name="is_electric" 
+            value="1"
+        >
+        <label for="is_electric">Електричний велосипед</label>
+    </div>
+    
+    <button type="submit">Замовити</button>
+</form>
+{% endblock %}

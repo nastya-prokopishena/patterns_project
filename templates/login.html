@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" action="{{ url_for('login') }}">
+    <h2>Вхід</h2>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Пароль" required>
+    <button type="submit">Увійти</button>
+    <p>Немає облікового запису? <a href="{{ url_for('register') }}">Зареєструватися</a></p>
+</form>
+{% endblock %}
